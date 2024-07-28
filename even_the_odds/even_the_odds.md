@@ -1,4 +1,8 @@
 # [Can you even the odds?](https://thefiddler.substack.com/p/can-you-even-the-odds)
+## TLDR
+My answer is 31/61, or roughly 50.8%.  Running `even_the_odds.py` will simulate three versions of turn order and report on A's win probability for each.
+
+I don't have an analytic solution to thue morse, but `even_the_odds.py` has a function which computes A's win probability to arbitrary precision.  That yields a win rate of 50.159% for A.
 
 ## Basic alternation
 As a warmup, let's solve the win probabilities for the alternating turn order.
@@ -38,3 +42,8 @@ P2 = 25/61
 P3 = 36/61
 
 My simulator agrees that A wins about 50.8% of the time! 
+
+## Thue Morse
+I have not been able to reason out a good way to compute win probabilities as a function of current and future state.  The best I have been able to do here is simulate the outcome, and recognize that if we analyze the sequence of length N, we've computed A's win probability up to a maximum error of (5/6)^N (the probability the game continues after turn N), and thus we can calculate A's win probability to arbitrary precision.  Doing this yields a win rate of 50.159% for A.
+
+My simulate came up with 50.20%, which is a bit futher from the truth than I like!
